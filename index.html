@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Contact Us</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="icon" href="./images/favicon-32x32.png" />
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=Karla:ital,wght@0,200..800;1,200..800&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div class="container">
+      <form action="">
+        <h1>Contact Us</h1>
+
+        <div class="form-container">
+          <div class="form-group">
+            <div>
+              <label for="First Name">First Name *</label>
+            </div>
+            <div id="input-container">
+              <input type="text" id-name="names" id="names" required />
+            </div>
+          </div>
+
+          <div class="form-group">
+            <div>
+              <label for="Last Name">Last Name *</label>
+            </div>
+
+            <div id="input-container">
+              <input type="text" id-name="names" id="last-name" required />
+            </div>
+          </div>
+        </div>
+
+        <div class="email-box">
+          <div>
+            <label for="Email"> Email Address *</label>
+          </div>
+
+          <div>
+            <input type="email" id-name="email" id="email" required />
+          </div>
+        </div>
+
+        <div class="query-box">
+          <div class="radio-box">
+            <div>
+              <label for="radio">Query Type *</label>
+            </div>
+
+            <div class="input-box">
+              <div class="radio1">
+                <input type="radio" name="query" value="general" />General
+                Enquiry
+              </div>
+
+              <div class="radio2">
+                <input type="radio" name="query" value="support" />Support
+                Request
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="message-box">
+          <p class="message">Message *</p>
+          <textarea name="" class="textarea" required></textarea>
+        </div>
+
+        <div class="consent">
+          <input type="checkbox" required />
+          <p>I consent to being contacted by the team*</p>
+        </div>
+
+        <div class="button">
+          <button>Submit</button>
+        </div>
+      </form>
+    </div>
+
+    <script>
+      const form = document.querySelector("form");
+      const names = document.getElementById("names");
+      const email = document.getElementById("email");
+
+      form.addEventListener("submit", (e) => {
+        e.preventDefault();
+
+        checkInputs();
+      });
+
+      function checkInputs() {
+        const namesValue = names.value.trim();
+        const emailValue = email.value.trim();
+
+        if (namesValue === "") {
+          setErrorFor(names, "First Name cannot be blank");
+        } else {
+          setSuccessFor(names);
+        }
+
+        if (emailValue === "") {
+          setErrorFor(email, "Email cannot be blank");
+        } else if (!isEmail(emailValue)) {
+          setErrorFor(email, "Email is not valid");
+        } else {
+          setSuccessFor(email);
+        }
+      }
+
+      function setErrorFor(input, message) {
+        const formControl = input.parentElement;
+        const small = formControl.querySelector("small");
+        small.innerText = message;
+        formControl.className = "form-group error";
+      }
+
+      function setSuccessFor(input) {
+        const formControl = input.parentElement;
+        formControl.className = "form-group success";
+      }
+
+      function isEmail(email) {
+        return /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(
+          email
+        );
+      }
+
+      // form.addEventListener("submit", (e) => {
+      //   e.preventDefault();
+
+      //   if (checkInputs()) {
+      //     alert("Form submitted successfully!");
+      //   }
+      // });
+
+      // function checkInputs() {
+      //   const namesValue = names.value.trim();
+      //   const emailValue = email.value.trim();
+      //   let isValid = true;
+
+      //   if (namesValue === "") {
+      //     setErrorFor(names, "First Name cannot be blank");
+      //     isValid = false;
+      //   } else {
+      //     setSuccessFor(names);
+      //   }
+
+      //   if (emailValue === "") {
+      //     setErrorFor(email, "Email cannot be blank");
+      //     isValid = false;
+      //   } else if (!isEmail(emailValue)) {
+      //     setErrorFor(email, "Email is not valid");
+      //     isValid = false;
+      //   } else {
+      //     setSuccessFor(email);
+      //   }
+
+      //   return isValid;
+      // }
+
+      // form.addEventListener("submit", (e) => {
+      //   e.preventDefault();
+
+      //   if (checkInputs()) {
+      //     alert("Your response has been submitted successfully!");
+      //   }
+      // });
+      function clearForm() {
+        form.reset();
+        const formGroups = document.querySelectorAll(".form-group");
+        formGroups.forEach((group) => {
+          group.className = "form-group";
+        });
+      }
+
+      form.addEventListener("submit", (e) => {
+        e.preventDefault();
+
+        if (checkInputs()) {
+          alert("Your response has been submitted successfully!");
+          clearForm();
+        }
+      });
+    </script>
+  </body>
+</html>
