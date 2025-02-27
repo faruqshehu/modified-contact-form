@@ -132,46 +132,46 @@
         );
       }
 
-      // form.addEventListener("submit", (e) => {
-      //   e.preventDefault();
+      form.addEventListener("submit", (e) => {
+        e.preventDefault();
 
-      //   if (checkInputs()) {
-      //     alert("Form submitted successfully!");
-      //   }
-      // });
+        if (checkInputs()) {
+          alert("Form submitted successfully!");
+        }
+      });
 
-      // function checkInputs() {
-      //   const namesValue = names.value.trim();
-      //   const emailValue = email.value.trim();
-      //   let isValid = true;
+      function checkInputs() {
+        const namesValue = names.value.trim();
+        const emailValue = email.value.trim();
+        let isValid = true;
 
-      //   if (namesValue === "") {
-      //     setErrorFor(names, "First Name cannot be blank");
-      //     isValid = false;
-      //   } else {
-      //     setSuccessFor(names);
-      //   }
+        if (namesValue === "") {
+          setErrorFor(names, "First Name cannot be blank");
+          isValid = false;
+        } else {
+          setSuccessFor(names);
+        }
 
-      //   if (emailValue === "") {
-      //     setErrorFor(email, "Email cannot be blank");
-      //     isValid = false;
-      //   } else if (!isEmail(emailValue)) {
-      //     setErrorFor(email, "Email is not valid");
-      //     isValid = false;
-      //   } else {
-      //     setSuccessFor(email);
-      //   }
+        if (emailValue === "") {
+          setErrorFor(email, "Email cannot be blank");
+          isValid = false;
+        } else if (!isEmail(emailValue)) {
+          setErrorFor(email, "Email is not valid");
+          isValid = false;
+        } else {
+          setSuccessFor(email);
+        }
 
-      //   return isValid;
-      // }
+        return isValid;
+      }
 
-      // form.addEventListener("submit", (e) => {
-      //   e.preventDefault();
+      form.addEventListener("submit", (e) => {
+        e.preventDefault();
 
-      //   if (checkInputs()) {
-      //     alert("Your response has been submitted successfully!");
-      //   }
-      // });
+        if (checkInputs()) {
+          alert("Your response has been submitted successfully!");
+        }
+      });
       function clearForm() {
         form.reset();
         const formGroups = document.querySelectorAll(".form-group");
